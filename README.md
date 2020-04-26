@@ -4,4 +4,8 @@ do Curso de Ciencia da computação na Universidade Federal do Amapá ministrado
 
 # Algoritmos de Ordenação
 - Quick Sort
-- 
+- Radix Sort
+- Heap Sort
+- Bucket Sort
+- Count Sort
+- Merg Sort
