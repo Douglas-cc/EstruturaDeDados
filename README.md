@@ -2,6 +2,14 @@
 Bom segue alguns algoritmos em C que elaborei durante a disciplina de Estrutura de dados no segundo semestre 
 do Curso de Ciencia da computação na Universidade Federal do Amapá ministrado pelo Profº Julio Furtado
 
+# Estrutura de dados
+- Pilha
+- Fila
+- Lista Simplesmente encadeada
+- Lista Duplamente encadeada
+- Lista Circular
+- Arvore de Busca
+
 # Algoritmos de Ordenação
 - Quick Sort
 - Radix Sort
@@ -9,3 +17,6 @@ do Curso de Ciencia da computação na Universidade Federal do Amapá ministrado
 - Bucket Sort
 - Count Sort
 - Merg Sort
+
+# Funções
+- Numeros Aleatorios
