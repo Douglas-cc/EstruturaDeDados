@@ -1,8 +1,8 @@
-# Algoritmos e estrutura de dados
-Bom segue alguns algoritmos em C que elaborei durante a disciplina de Estrutura de dados no segundo semestre 
-do Curso de Ciencia da computação na Universidade Federal do Amapá ministrado pelo Profº Julio Furtado
+# Algoritmos e Estrutura de Dados
+Bom segue alguns algoritmos em C que programei durante a disciplina de Estrutura de dados no segundo semestre 
+no Curso de Ciência da Computação na Universidade Federal do Amapá ministrado pelo Profº Julio Furtado
 
-# Estrutura de dados
+# Estrutura de Dados
 - Pilha
 - Fila
 - Lista Simplesmente encadeada
