@@ -1,4 +1,3 @@
-// C++ implementation of Radix Sort 
 #include<iostream>
 #include <conio.h>
 #include <stdlib.h>
@@ -8,7 +7,7 @@ using namespace std;
 
 #define TAM_VETOR 500
 
-// Função para obter o valor máximo 
+// FunÃ§Ã£o para obter o valor mÃ¡ximo 
 int getMax(int arr[], int n) 
 { 
 	int mx = arr[0]; 
@@ -18,29 +17,29 @@ int getMax(int arr[], int n)
 	return mx; 
 } 
 
-// Função para fazer a contagem de acordo com o dígito representado (exp)
+// FunÃ§Ã£o para fazer a contagem de acordo com o dÃ­gito representado (exp)
 
 void countSort(int arr[], int n, int exp) 
 { 
-	int output[n]; // matriz de saída
+	int output[n]; // matriz de saÃ­da
 	int i, count[10] = {0}; 
 
 	// armazenar contagem
 	for (i = 0; i < n; i++) 
 		count[ (arr[i]/exp)%10 ]++; 
 
-	// Contagem de alterações para posição real na saída
+	// Contagem de alteraÃ§Ãµes para posiÃ§Ã£o real na saÃ­da
 	for (i = 1; i < 10; i++) 
 		count[i] += count[i - 1];
 
-	// Contrução da saída
+	// ContruÃ§Ã£o da saÃ­da
 	for (i = n - 1; i >= 0; i--) 
 	{ 
 		output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
 		count[ (arr[i]/exp)%10 ]--; 
 	} 
 
-	// Copiar a saída com os números classificados
+	// Copiar a saÃ­da com os nÃºmeros classificados
 	for (i = 0; i < n; i++) 
 		arr[i] = output[i]; 
 } 
@@ -48,15 +47,15 @@ void countSort(int arr[], int n, int exp)
 // Radix Sort 
 void radixsort(int arr[], int n) 
 { 
-	// Encontrar o número máximo para saber o número de dígitos
+	// Encontrar o nÃºmero mÃ¡ximo para saber o nÃºmero de dÃ­gitos
 	int m = getMax(arr, n); 
 
-	// Contagem para cada dígito 
+	// Contagem para cada dÃ­gito 
 	for (int exp = 1; m/exp > 0; exp *= 10) 
 		countSort(arr, n, exp); 
 } 
 
-// Função para imprimir uma matriz
+// FunÃ§Ã£o para imprimir uma matriz
 void print(int arr[], int n) 
 { 
 	printf("Numeros ordenados: ");
@@ -65,7 +64,7 @@ void print(int arr[], int n)
 		cout << arr[i] << " "; 
 } 
 
-// Função para testar as funções acima
+// FunÃ§Ã£o para testar as funÃ§Ãµes acima
 int main() 
 { 
 	int arr[TAM_VETOR];
