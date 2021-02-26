@@ -1,13 +1,3 @@
-/**************************************************/
-/*  Autor: Felipe Andrade                         */
-/*                                                */
-/*  araujoandrade.flp@gmail.com                   */
-/*                                                */
-/*  Data: 19/09/12 11:15                          */
-/*                                                */
-/*  Descrição: Lista duplamente encadeada         */
-/*                                                */
-/**************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -20,29 +10,29 @@ struct noLista{ /* estrutura duplamente auto-referenciada */
 
 };
 
-typedef struct noLista NOLISTA; /* definição do tipo NOLISTA a partir do tipo 'struct noLista' */
-typedef NOLISTA *NOLISTAPTR; /* definição do tipo *NOLISTAPTR a partir do tipo NOLISTA */
+typedef struct noLista NOLISTA; /* definiÃ§Ã£o do tipo NOLISTA a partir do tipo 'struct noLista' */
+typedef NOLISTA *NOLISTAPTR; /* definiÃ§Ã£o do tipo *NOLISTAPTR a partir do tipo NOLISTA */
 
-/* insere um nó no início da lista */
+/* insere um nÃ³ no inÃ­cio da lista */
 void insere_no_inicio(NOLISTAPTR *inicio, char valor){
      
      NOLISTAPTR novo;
      
-     novo = (NOLISTAPTR) malloc(sizeof(NOLISTA)); /* aloca memória para o novo nó */
+     novo = (NOLISTAPTR) malloc(sizeof(NOLISTA)); /* aloca memÃ³ria para o novo nÃ³ */
      
-     if(novo == NULL) /* se não houver memória disponível */ 
-         return;      /* sai da função */
+     if(novo == NULL) /* se nÃ£o houver memÃ³ria disponÃ­vel */ 
+         return;      /* sai da funÃ§Ã£o */
      
      if(*inicio == NULL){    /* se a lista estivava vazia */
-         novo->valor = valor; /* insere o valor no novo nó */
-         novo->proximo = novo->anterior = NULL; /* não há próximo nó nem nó anterior, pois só há um nó */
-         *inicio = novo; /* o novo nó é o primeiro da lista */
-     }else{   /* se já havia nó na lista */
-         novo->valor = valor; /* insere o valor no novo nó */
-         novo->anterior = NULL; /* não há nó anterior */
-         novo->proximo = *inicio; /* o novo nó aponta para o que está no início */
-         (*inicio)->anterior = novo; /* o nó atual do início aponta para o novo nó */
-         *inicio = novo; /* o novo nó passa a ser o primeiro da lista */
+         novo->valor = valor; /* insere o valor no novo nÃ³ */
+         novo->proximo = novo->anterior = NULL; /* nÃ£o hÃ¡ prÃ³ximo nÃ³ nem nÃ³ anterior, pois sÃ³ hÃ¡ um nÃ³ */
+         *inicio = novo; /* o novo nÃ³ Ã© o primeiro da lista */
+     }else{   /* se jÃ¡ havia nÃ³ na lista */
+         novo->valor = valor; /* insere o valor no novo nÃ³ */
+         novo->anterior = NULL; /* nÃ£o hÃ¡ nÃ³ anterior */
+         novo->proximo = *inicio; /* o novo nÃ³ aponta para o que estÃ¡ no inÃ­cio */
+         (*inicio)->anterior = novo; /* o nÃ³ atual do inÃ­cio aponta para o novo nÃ³ */
+         *inicio = novo; /* o novo nÃ³ passa a ser o primeiro da lista */
      }
 }
 
@@ -62,18 +52,18 @@ void insere_no_final(NOLISTAPTR *inicio, char valor){
          *inicio = novo;
      }
      else{
-         atual = *inicio; /* atual aponta para o início */
-         while(atual->proximo != NULL) /* enquanto o nó atual não for o último */
-             atual = atual->proximo;    /* vai para o nó seguinte */
+         atual = *inicio; /* atual aponta para o inÃ­cio */
+         while(atual->proximo != NULL) /* enquanto o nÃ³ atual nÃ£o for o Ãºltimo */
+             atual = atual->proximo;    /* vai para o nÃ³ seguinte */
          
          novo->valor = valor;
-         novo->anterior = atual;  /*o nó anterior ao novo é o nó atual */
-         novo->proximo = NULL; /* não há próximo nó, pois o novo será o último */
-         atual->proximo = novo; /* o nó atual aponta para o novo nó e não é mais o último */
+         novo->anterior = atual;  /*o nÃ³ anterior ao novo Ã© o nÃ³ atual */
+         novo->proximo = NULL; /* nÃ£o hÃ¡ prÃ³ximo nÃ³, pois o novo serÃ¡ o Ãºltimo */
+         atual->proximo = novo; /* o nÃ³ atual aponta para o novo nÃ³ e nÃ£o Ã© mais o Ãºltimo */
      }
 }   
 
-/* remove um nó escolhido pelo usuário */
+/* remove um nÃ³ escolhido pelo usuÃ¡rio */
 int retira(NOLISTAPTR *inicio, char valor){
     
     NOLISTAPTR temporario, atual;
@@ -81,42 +71,42 @@ int retira(NOLISTAPTR *inicio, char valor){
     if(*inicio == NULL) 
         return 0; /* retorna 0 caso a lista esteja vazia */
     
-    atual = *inicio; /* o nó atual é o do início */
+    atual = *inicio; /* o nÃ³ atual Ã© o do inÃ­cio */
     
     if((*inicio)->valor == valor) /* caso o no a ser retirado seja o do inicio */
-        *inicio = (*inicio)->proximo; /* o nó inicial passa a ser o próximo da lista */
+        *inicio = (*inicio)->proximo; /* o nÃ³ inicial passa a ser o prÃ³ximo da lista */
     
-    while(atual != NULL && atual->valor != valor) /*se há nó e o valor do mesmo não é o valor que se quer retirar*/
-        atual = atual->proximo; /*passa para o próximo*/
+    while(atual != NULL && atual->valor != valor) /*se hÃ¡ nÃ³ e o valor do mesmo nÃ£o Ã© o valor que se quer retirar*/
+        atual = atual->proximo; /*passa para o prÃ³ximo*/
     
     if(atual == NULL)
-        return 0; /* retorna 0 se não encontrou o valor */
+        return 0; /* retorna 0 se nÃ£o encontrou o valor */
     /* caso tenha encontrado */
     else{
-        temporario = atual; /* temporario aponta para o nó encontrado */
+        temporario = atual; /* temporario aponta para o nÃ³ encontrado */
         
-        if(atual->anterior != NULL)/* caso haja um nó anterior ao enontrado*/
-            atual->anterior->proximo = atual->proximo; /* faz o nó anterior apontar para o nó posterior ao encontrado */
+        if(atual->anterior != NULL)/* caso haja um nÃ³ anterior ao enontrado*/
+            atual->anterior->proximo = atual->proximo; /* faz o nÃ³ anterior apontar para o nÃ³ posterior ao encontrado */
         
-        if(atual->proximo != NULL) /* caso haja um nó posterior ao enontrado*/
-            atual->proximo->anterior = atual->anterior; /* faz o nó posterior apontar para o nó anterior ao encontrado */
+        if(atual->proximo != NULL) /* caso haja um nÃ³ posterior ao enontrado*/
+            atual->proximo->anterior = atual->anterior; /* faz o nÃ³ posterior apontar para o nÃ³ anterior ao encontrado */
         
-        free(temporario);/* remove o nó encontrado */
+        free(temporario);/* remove o nÃ³ encontrado */
     }
     
     return 1;
 }
 
-/* deleta um nó apartir do início da lista */
+/* deleta um nÃ³ apartir do inÃ­cio da lista */
 char elimina_no(NOLISTAPTR *inicio){
     
     NOLISTAPTR temporario;
     char c;
     
-    temporario = *inicio; /* nó do início passa a ser temporário */
-    c = (*inicio)->valor; /* pega o valor que estava no nó */
-    *inicio = (*inicio)->proximo; /* o nó seguinte passa a ser o do início */
-    free(temporario); /* deleta o nó temporário */
+    temporario = *inicio; /* nÃ³ do inÃ­cio passa a ser temporÃ¡rio */
+    c = (*inicio)->valor; /* pega o valor que estava no nÃ³ */
+    *inicio = (*inicio)->proximo; /* o nÃ³ seguinte passa a ser o do inÃ­cio */
+    free(temporario); /* deleta o nÃ³ temporÃ¡rio */
     
     return c;
 }
@@ -145,7 +135,7 @@ void imprime_lista_ordem_inversa(NOLISTAPTR lista){
      if(esta_vazia(lista))
          printf("\n\nA lista esta vazia.\n\n");
      else{
-         while(lista->proximo != NULL) /* enquanto não chegar no último nó ...*/
+         while(lista->proximo != NULL) /* enquanto nÃ£o chegar no Ãºltimo nÃ³ ...*/
              lista = lista->proximo;   /* ... percorre a lista */
              
          printf("\nA lista eh:\n\n");
@@ -158,7 +148,7 @@ void imprime_lista_ordem_inversa(NOLISTAPTR lista){
 }
 
 void menu(){
-     printf("\n\n\t\t\t\t  OPCÕES:\n\n");
+     printf("\n\n\t\t\t\t  OPCÃ•ES:\n\n");
      printf("\t\t1 - Inserir um elemento no inicio da lista\n");
      printf("\t\t2 - Inserir um elemento no final da lista\n");
      printf("\t\t3 - Remover um elemento da lista\n");
@@ -229,7 +219,7 @@ int main(){
         scanf("%d", &opcao);
     }
     printf("\nLimpando lista ...\n\n");
-    while(! esta_vazia(lista)){ /* retira todos os nós não apagados para liberar a memória */
+    while(! esta_vazia(lista)){ /* retira todos os nÃ³s nÃ£o apagados para liberar a memÃ³ria */
         printf("No %c retirado\n", elimina_no(&lista));
     }
     printf("\nLista vazia\n");
